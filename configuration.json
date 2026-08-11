@@ -1,14 +1,14 @@
 {
-  "template": {
-    "project": "https://github.com/TheRake66/",
-    "component": "https://github.com/TheRake66/",
-    "apirest": "https://github.com/TheRake66/",
-    "service": "https://github.com/TheRake66/",
-    "library": "https://github.com/TheRake66/",
-    "locale": "https://github.com/TheRake66/",
-    "style": "https://github.com/TheRake66/",
-    "page": "https://github.com/TheRake66/",
-    "type": "https://github.com/TheRake66/"
+  "templates": {
+    "project": "https://github.com/TheRake66/python-fast/raw/refs/heads/main/template_project.zip",
+    "component": "https://github.com/TheRake66/python-fast/raw/refs/heads/main/template_component.zip",
+    "apirest": "https://github.com/TheRake66/python-fast/raw/refs/heads/main/template_apirest.zip",
+    "service": "https://github.com/TheRake66/python-fast/raw/refs/heads/main/template_service.zip",
+    "library": "https://github.com/TheRake66/python-fast/raw/refs/heads/main/template_library.zip",
+    "locale": "https://github.com/TheRake66/python-fast/raw/refs/heads/main/template_locale.zip",
+    "style": "https://github.com/TheRake66/python-fast/raw/refs/heads/main/template_style.zip",
+    "page": "https://github.com/TheRake66/python-fast/raw/refs/heads/main/template_page.zip",
+    "type": "https://github.com/TheRake66/python-fast/raw/refs/heads/main/template_type.zip"
   },
   "frontend": {
     "version": "latest",

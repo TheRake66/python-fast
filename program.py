@@ -1,16 +1,19 @@
 from argparse import ArgumentParser, Namespace, _SubParsersAction
 from urllib.request import urlretrieve
+import json, zipfile, os, uuid
 from zipfile import ZipFile
 from enum import Enum
-import json, zipfile
 
 # Data structure =====================================================
 
 class FastConf:
   __data: dict = None
+  @classmethod
   def get(cls) -> dict:
     if cls.__data is None:
-      with open("configuration.json") as buffer:
+      path = os.path.dirname(os.path.realpath(__file__))
+      file = os.path.join(path, "configuration.json")
+      with open(file) as buffer:
         cls.__data = json.load(buffer)
     return cls.__data
 
@@ -27,12 +30,12 @@ class ItemType(Enum):
     return self.value
 
 class FileExt(Enum):
-  TYPESCRIPT_JSX  : str = "api"
-  TYPESCRIPT      : str = "api"
-  PYTHON          : str = "srv"
-  JSON            : str = "com"
-  HTML            : str = "sty"
-  SCSS            : str = "lib"
+  TYPESCRIPT_JSX  : str = "tsx"
+  TYPESCRIPT      : str = "ts"
+  PYTHON          : str = "py"
+  JSON            : str = "json"
+  HTML            : str = "html"
+  SCSS            : str = "scss"
   def __str__(self) -> str:
     return self.value
 
@@ -46,15 +49,17 @@ class VarName(Enum):
 # Utils funcs ========================================================
 
 def progress_callback(index: int, size: int, total: int) -> None:
-  downloaded: int = index * size
+  downloaded: int = min(index * size, total)
   percent: float = (downloaded / total) * 100 if total > 0 else 0
-  print(f"\rProgression : {percent:.1f}% ({downloaded}/{total} octets)", end="")
+  print(f"\rProgression : {percent:.1f}% ({downloaded}/{total} octets)", end="", flush=True)
 
-def download_template(url: str, path: str) -> None:
-  urlretrieve(url, path, reporthook=progress_callback)
+def download_template(url: str) -> str:
+  name = str(uuid.uuid4().hex)
+  urlretrieve(url, name, reporthook=progress_callback)
+  return name
 
-def unzip_file(path: str) -> None:  
-  with ZipFile(path, "r") as zip:
+def unzip_file(name: str) -> None:  
+  with ZipFile(name, "r") as zip:
     for item in zip.infolist():
       print(item.filename)
 
@@ -67,7 +72,8 @@ def parse_new(subparsers: _SubParsersAction) -> None:
 
 def handle_new(args: Namespace) -> None:
   print(f"📂 Création de l'application : {args.name}")
-  download_template(FastConf.get().template.project)
+  url = FastConf.get()["templates"]["project"]
+  unzip_file(download_template(url))
 
 # Add item ===========================================================
 
