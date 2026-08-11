@@ -1,0 +1,17 @@
+.container {
+  
+}
+
+@import "../responsive.scss";
+
+@media screen and (max-width: $tablet-width) {
+  .container {
+    
+  }
+}
+
+@media screen and (max-width: $mobile-width) {
+  .container {
+    
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "version": "v1",
+  "credentials": true,
+  "origins": [ "*" ],
+  "methods": [ "*" ],
+  "headers": [ "*" ]
+}

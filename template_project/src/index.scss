@@ -1,0 +1,70 @@
+html, body, main, #root {
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  overflow: auto;
+}
+
+body, body * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: var(--theme-font);
+  letter-spacing: var(--letter-spacing);
+  font-size: var(--font);
+  font-family: 'regular';
+  font-weight: normal;
+  font-style: normal;
+  display: flex;
+  
+  scrollbar-width: thin;
+  scrollbar-color: var(--theme-scroll) transparent;
+
+  &:not(input, textarea) {
+    user-select: none;
+  }
+
+  &::-webkit-scrollbar {
+    width: var(--scrollbar);
+    height: var(--scrollbar);
+  }
+
+  &::-webkit-scrollbar-corner {
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: var(--radius-small);
+    background: var(--theme-scroll);
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    
+  }
+
+  &::-webkit-scrollbar-thumb:active {
+    
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  font-size: small;
+  color: var(--theme-font-alternative);
+}
+
+button {
+  outline: none;
+  border: none;
+}
+
+form {
+  flex-direction: column;
+
+  > *:not(:last-of-type) {
+    margin-bottom: var(--margin);
+  }
+}

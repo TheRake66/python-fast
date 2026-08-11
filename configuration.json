@@ -1,0 +1,61 @@
+{
+  "template": {
+    "project": "https://github.com/TheRake66/",
+    "component": "https://github.com/TheRake66/",
+    "apirest": "https://github.com/TheRake66/",
+    "service": "https://github.com/TheRake66/",
+    "library": "https://github.com/TheRake66/",
+    "locale": "https://github.com/TheRake66/",
+    "style": "https://github.com/TheRake66/",
+    "page": "https://github.com/TheRake66/",
+    "type": "https://github.com/TheRake66/"
+  },
+  "frontend": {
+    "version": "latest",
+    "server": {
+      "hosted": true,
+      "address": "0.0.0.0",
+      "port": 3000
+    },
+    "packages": {
+      "core": [
+        "axios",
+        "js-cookie",
+        "react-ga4",
+        "react-helmet-async",
+        "react-router-dom",
+        "i18next",
+        "react-i18next",
+        "i18next-browser-languagedetector"
+      ],
+      "styling": [
+        "lucide-react",
+        "vite-plugin-svgr",
+        "tailwindcss",
+        "three",
+        "@tailwindcss/vite",
+        "@react-three/fiber"
+      ],
+      "development": [
+        "sass"
+      ],
+      "type": [
+        "@types/js-cookie",
+        "@types/node",
+        "@types/three"
+      ]
+    }
+  },
+  "backend": {
+    "version": "latest",
+    "server": {
+      "hosted": true,
+      "address": "0.0.0.0",
+      "port": 8000
+    },
+    "packages": [
+      "fastapi",
+      "uvicorn"
+    ]
+  }
+}
