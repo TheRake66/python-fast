@@ -1,7 +1,13 @@
+from argparse import ArgumentParser, Namespace, _SubParsersAction
+from libraries.structure import ActionType, ItemType
+
 def parse_add(subparsers: _SubParsersAction) -> None:
-  parser: Any = subparsers.add_parser(ActionType.ADD, help="Ajouter un nouvel élément.")
-  parser.add_argument("type", type=ItemType, choices=list(ItemType), help="Type d'élément.")
-  parser.add_argument("name", type=str, help="Nom de l'élément.")
+  parser: ArgumentParser = subparsers.add_parser(ActionType.ADD,
+    help="Ajouter un nouvel élément.")
+  parser.add_argument("type", type=ItemType, choices=list(ItemType), 
+    help="Type d'élément.")
+  parser.add_argument("name", type=str,
+    help="Nom de l'élément.")
   parser.set_defaults(func=handle_add)
 
 def handle_add(args: Namespace) -> None:
