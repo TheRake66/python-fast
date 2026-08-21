@@ -1,0 +1,30 @@
+{
+  "assembly": {
+    "name": "{{capitalize_name}}",
+    "version": "1.0.0.0",
+    "author": "{{creator_name}}",
+    "github": ""
+  },
+  "default": {
+    "language": "{{language_short}}",
+    "theme": "light",
+    "fullscreen": false
+  },
+  "cookies": {
+    
+  },
+  "localstorage": {
+    "language": "language",
+    "theme": "theme",
+    "fullscreen": "fullscreen"
+  },
+  "api": {
+    "server": "{{backend_ip}}",
+    "port": {{backend_port}},
+    "version": "v1",
+    "ssl": false
+  },
+  "analytics": {
+    "googleid": "G-"
+  }
+}

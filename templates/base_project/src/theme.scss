@@ -1,0 +1,97 @@
+:root {
+  --transition: all .1s linear;
+  --line-space: 30px;
+  --border: solid 1px;
+  --scrollbar: 4px;
+
+  --letter-spacing: 2px;
+  --letter-spacing-large: 4px;
+  --letter-spacing-xlarge: 6px;
+  --letter-spacing-title: 12px;
+
+  --font-xsmall: 8px;
+  --font-small: 12px;
+  --font: 16px;
+  --font-large: 20px;
+  --font-xlarge: 24px;
+  --font-title: 64px;
+
+  --radius-xsmall: 5px;
+  --radius-small: 10px;
+  --radius: 15px;
+  --radius-large: 20px;
+  --radius-xlarge: 25px;
+  --radius-round: 64px;
+
+  --padding-xsmall: 8px;
+  --padding-small: 16px;
+  --padding: 32px;
+  --padding-large: 64px;
+  --padding-xlarge: 96px;
+
+  --margin-xsmall: 8px;
+  --margin-small: 16px;
+  --margin: 32px;
+  --margin-large: 64px;
+  --margin-xlarge: 96px;
+
+  --shadow-xsmall: 0px 0px 5px;
+  --shadow-small: 0px 0px 10px;
+  --shadow: 0px 0px 15px;
+  --shadow-large: 0px 0px 20px;
+  --shadow-xlarge: 0px 0px 25px;
+}
+
+
+
+[data-theme="light"] {
+  --theme-neutral: #4277DF;
+  --theme-neutral-transparent: rgb(66, 119, 223, .3);
+
+  --theme-good: #249F58;
+  --theme-good-transparent: rgb(36, 159, 88, .3);
+
+  --theme-warning: #D7A71E;
+  --theme-warning-transparent: rgb(215, 167, 30, .3);
+
+  --theme-danger: #CF3730;
+  --theme-danger-transparent: rgb(207, 55, 48, .3);
+
+  --theme-font: #101010;
+  --theme-font-alternative: #434C53;
+  
+  --theme-background-light: #FFFFFF;
+  --theme-background: #F9FBFA;
+  --theme-background-dark: #F3F4F6;
+
+  --theme-scroll: #B0B3B9;
+  --theme-border: #B0B3B9;
+  --theme-shadow: rgba(0, 0, 0, 0.2);
+}
+
+
+
+[data-theme="light"] {
+  --theme-neutral: #4277DF;
+  --theme-neutral-transparent: rgb(66, 119, 223, .3);
+
+  --theme-good: #4AB975;
+  --theme-good-transparent: rgb(74, 185, 117, .3);
+
+  --theme-warning: #FDC23A;
+  --theme-warning-transparent: rgb(253, 194, 58, .3);
+
+  --theme-danger: #EA4F45;
+  --theme-danger-transparent: rgb(234, 79, 69, .3);
+
+  --theme-font: #FFFFFF;
+  --theme-font-alternative: #C1C1C1;
+  
+  --theme-background-light: #343B43;
+  --theme-background: #252932;
+  --theme-background-dark: #151B27;
+
+  --theme-scroll: #878A8F;
+  --theme-border: #878A8F;
+  --theme-shadow: rgba(0, 0, 0, 0.2);
+}

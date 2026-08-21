@@ -1,0 +1,13 @@
+
+
+French: '{{language_short}}'
+import fr from '../locales/fr.json';
+fr: { translation: fr }
+
+
+
+
+
+
+from api.routes.example import router as example
+add_routers(example)

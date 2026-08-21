@@ -1,0 +1,64 @@
+{
+  "templates": {
+    "project": "https://github.com/TheRake66/python-fast/raw/refs/heads/main/template_project.zip",
+    "component": "https://github.com/TheRake66/python-fast/raw/refs/heads/main/template_component.zip",
+    "apirest": "https://github.com/TheRake66/python-fast/raw/refs/heads/main/template_apirest.zip",
+    "service": "https://github.com/TheRake66/python-fast/raw/refs/heads/main/template_service.zip",
+    "library": "https://github.com/TheRake66/python-fast/raw/refs/heads/main/template_library.zip",
+    "locale": "https://github.com/TheRake66/python-fast/raw/refs/heads/main/template_locale.zip",
+    "style": "https://github.com/TheRake66/python-fast/raw/refs/heads/main/template_style.zip",
+    "page": "https://github.com/TheRake66/python-fast/raw/refs/heads/main/template_page.zip",
+    "type": "https://github.com/TheRake66/python-fast/raw/refs/heads/main/template_type.zip"
+  },
+  "frontend": {
+    "version": "latest",
+    "customization": {
+
+    },
+    "server": {
+      "hosted": true,
+      "address": "0.0.0.0",
+      "port": 3000
+    },
+    "packages": {
+      "core": [
+        "axios",
+        "js-cookie",
+        "react-ga4",
+        "react-helmet-async",
+        "react-router-dom",
+        "i18next",
+        "react-i18next",
+        "i18next-browser-languagedetector"
+      ],
+      "styling": [
+        "lucide-react",
+        "vite-plugin-svgr",
+        "tailwindcss",
+        "three",
+        "@tailwindcss/vite",
+        "@react-three/fiber"
+      ],
+      "development": [
+        "sass"
+      ],
+      "type": [
+        "@types/js-cookie",
+        "@types/node",
+        "@types/three"
+      ]
+    }
+  },
+  "backend": {
+    "version": "latest",
+    "server": {
+      "hosted": true,
+      "address": "0.0.0.0",
+      "port": 8000
+    },
+    "packages": [
+      "fastapi",
+      "uvicorn"
+    ]
+  }
+}
