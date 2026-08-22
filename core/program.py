@@ -25,6 +25,8 @@ def main():
   
   args: Namespace = parser.parse_args()
   args.func(args)
+  
+  print()
 
 if __name__ == "__main__":
   main()

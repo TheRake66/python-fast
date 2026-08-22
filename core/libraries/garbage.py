@@ -1,27 +1,24 @@
-from urllib.request import urlretrieve
-from zipfile import ZipFile, ZipInfo
-from enum import Enum
-import uuid
+from libraries.structure import VarValue
+from typing import NoReturn
+from pathlib import Path
+import sys, os, shutil
 
-class BaseEnum(Enum):
-  def __str__(self) -> str:
-    return self.value
 
-def progress_callback(index: int, size: int, total: int) -> None:
-  downloaded: int = min(index * size, total)
-  percent: float = (downloaded / total) * 100 if total > 0 else 0
-  print(f"\rProgression : {percent:.1f}% ({downloaded}/{total} octets)", end="", flush=True)
+def load_values(name: str) -> VarValue:
+  return VarValue(
+    CAPITALIZE_NAME = name.capitalize(),
+    UPPER_NAME = name.upper(),
+    LOWER_NAME = name.lower())
 
-def download_template(url: str) -> str:
-  name: str = str(uuid.uuid4().hex)
-  urlretrieve(url, name, reporthook=progress_callback)
-  return name
+def ensure_project() -> None:
+  if Path("index.html").is_file(): return
+  print("❌ Le répertoire courant n'est pas une application.")
+  sys.exit(1)
 
-def unzip_file(path: str) -> None:  
-  with ZipFile(path, "r") as zip:
-    for info in zip.infolist():
-      process_zipinfo(info)
+def get_venv(binary: str) -> str:
+  if sys.platform == 'win32':
+    return os.path.join('venv', 'Scripts', f'{binary}.exe')
+  return os.path.join('venv', 'bin', binary)
 
-def process_zipinfo(info: ZipInfo):
-  print(info)
-  pass
+def get_npm() -> str:
+  return shutil.which('npm') or 'npm'
