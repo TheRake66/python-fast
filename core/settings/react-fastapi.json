@@ -17,9 +17,7 @@
   ],
   "suffixs": [
     ".tsx",
-    ".jsx",
     ".ts",
-    ".js",
     ".py",
     ".scss",
     ".json",
