@@ -1,5 +1,5 @@
 from argparse import ArgumentParser, Namespace, _SubParsersAction
-from libraries.configuration import load_json
+from libraries.setting import load_json
 import sys
 
 def main():

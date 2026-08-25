@@ -1,4 +1,4 @@
-from libraries.configuration import get_value
+from libraries.setting import get_value
 from libraries.variable import get_injected
 from libraries.catchable import Catchable
 from libraries.explorer import root
@@ -8,9 +8,9 @@ from pathlib import Path
 from enum import Enum
 import uuid, os, tempfile
 
-class TemplateNotExist(Catchable): message="Template {} not exist in configuration file!"
 class TemplateNotFound(Catchable): message="Template {} not found!"
 class BadTemplateFormat(Catchable): message="Template {} is badly formatted!"
+class CantDownloadTemplate(Catchable): message="Can't download {} template!"
 class CantOpenTemplate(Catchable): message="Can't open {} template file!"
 
 class ProcessType(Enum):
@@ -24,10 +24,6 @@ def __replace_variables(text: str, variables: dict[str, str]) -> str:
       text = text.replace(variable, value)
   return text
 
-def __get_zip(template: str) -> str:
-  try: return get_value("templates", template)
-  except: raise TemplateNotExist(template)
-
 def __download_zip(url: str) -> Path:
   try:
     temp = Path(tempfile.gettempdir())
@@ -35,24 +31,23 @@ def __download_zip(url: str) -> Path:
     path = temp / name
     urlretrieve(url, path)
     return path
-  except: raise TemplateNotFound(url)
+  except: raise CantDownloadTemplate(url)
 
 def __clean_zip(path: Path) -> None:
   try: os.remove(path)
   except: pass
 
 def __extract_zip(path: Path, variables: dict[str, str]) -> None:
+  suffixs: list[str] = get_value("suffixs")
   try:
     with ZipFile(path, "r") as zip:
       try:
-        suffixs: list[str] = get_value("suffixs")
         for info in zip.infolist():
           if info.is_dir(): continue
           # Remplace les variables dans son chemin.
           info.filename = __replace_variables(info.filename, variables)
           object: Path =  Path(info.filename)
-          # S'il n'est pas dans la liste des extensions on extrait
-          # juste le fichier tel quel.
+          # S'il n'est pas dans la liste des extensions on extrait juste le fichier tel quel.
           if not object.suffix in suffixs:
             zip.extract(info, ".")
             continue
@@ -77,13 +72,11 @@ def __delete_zip(path: Path, variables: dict[str, str]) -> None:
           file: str = info.filename
           # Remplace les variables dans son chemin.
           file = __replace_variables(file, variables)
-          # Check si c'est un fichier ou un lien pour
-          # le supprimer.
+          # Check si c'est un fichier ou un lien pour le supprimer.
           object: Path = Path(file)
           if object.is_file() or object.is_symlink():
             object.unlink()
-            # Supprimer les dossier parents non vides
-            # pour remonter jusqu'au bon dossier.
+            # Supprimer les dossier parents non vides pour remonter jusqu'au bon dossier.
             for parent in object.parents:
               try: parent.rmdir()
               except OSError: break
@@ -91,8 +84,8 @@ def __delete_zip(path: Path, variables: dict[str, str]) -> None:
   except: raise CantOpenTemplate(path)
 
 def process_zip(template: str, namespace: str, extras: list[str], type: ProcessType):
-  zip: str = __get_zip(template)
-  path: Path = root / "templates" / Path(zip)
+  zip: str = get_value("templates", template)
+  path: Path = root / "templates" / zip
   clean: bool = False
   if zip.startswith("http"):
     path = __download_zip(zip)

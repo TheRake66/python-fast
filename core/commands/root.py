@@ -10,4 +10,4 @@ def parse_root(subparsers: _SubParsersAction[ArgumentParser]) -> None:
 def handle_root(args: Namespace) -> None:
   try: open_folder(root)
   except ExplorerInvalidPath as e: 
-    print_error("Cannot open installation folder!", e)
+    print_error("Can't open installation folder!", e)

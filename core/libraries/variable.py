@@ -1,10 +1,10 @@
-from libraries.configuration import get_value
+from libraries.setting import get_value
 from libraries.catchable import Catchable
 import os, importlib
 
 class InvalidNamespace(Catchable): message="Namespace {} is not valid!"
 class InvalidModule(Catchable): message="Module {} is not valid!"
-class InvalidConstant(Catchable): message="Constants from configuration are not valid!"
+class InvalidConstant(Catchable): message="Constants from settings are not valid!"
 class InvalidExtra(Catchable): message="Extra constant {} is not valid!"
 
 def __from_extras(extras: list[str]) -> dict[str, str]:
@@ -23,8 +23,8 @@ def __from_constants() -> dict[str, str]:
   except: raise InvalidConstant()
 
 def __from_modules() -> dict[str, str]:
-  variables: dict[str, str] = {}
   modules: list[str] = get_value("modules")
+  variables: dict[str, str] = {}
   for module in modules:
     try:
       loaded = importlib.import_module(f"modules.{module}")

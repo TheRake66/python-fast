@@ -27,7 +27,7 @@ You just need to enter a single command to install Fast:
 
 * `Fast`: Installation folder.
   * `modules`: The folder containing your custom variable modules.
-  * `settings`: The folder containing your custom configurations.
+  * `settings`: The folder containing your custom settings.
   * `templates`: The folder containing your custom templates.
 
 The other folders contain Fast source code, so you do not need to access them.
@@ -36,18 +36,18 @@ The other folders contain Fast source code, so you do not need to access them.
 
 * `fast`: Main command.
   * `add`: Add a new element to your project from a template.
-    * `key`: Template key in the configuration file.
+    * `key`: Template key in the settings file.
     * `name`: Name of the element to add.
     * `extras`: Additional constants to add to the process.
   * `delete`: Delete an existing element in your project from a template.
-    * `key`: Template key in the configuration file.
+    * `key`: Template key in the settings file.
     * `name`: Name of the element to delete.
     * `extras`: Additional constants to add to the process.
   * `run`: Run a service in the system terminal.
-    * `key`: Service key in the configuration file.
-  * `load`: Load another configuration file.
-    * `name`: Filename of configuration without suffix.
-  * `infos`: Display many informations about current configuration.
+    * `key`: Service key in the settings file.
+  * `load`: Load another settings file.
+    * `name`: Filename of settings without suffix.
+  * `infos`: Display many informations about current settings.
   * `root`: Open installation folder in file explorer.
   * `open`: Open current folder in file explorer.
   * `git`: Open source code repository in web browser.
@@ -96,19 +96,19 @@ In the same example, a file named `{{namespace_ossep_lower}}.tsx` will result in
        └──name.tsx
 ```
 
-## Add a configuration
+## Add a settings
 
-In the Fast installation folder, you will find a `settings` folder containing your configuration files for Fast.
+In the Fast installation folder, you will find a `settings` folder containing your settings files for Fast.
 
-The `default.json` configuration file is included as an example. It allows you to develop a React/TS + FastAPI web application.
+The `react-fastapi.json` settings file is included as an example. It allows you to develop a React/TS + FastAPI web application.
 
-Create your own configuration files based on the default one (for example: `godot.json`, with your templates for rapid game development).
+Create your own settings files based on the last one (for example: `godot.json`, with your templates for rapid game development).
 
 ## Adding variables
 
-### With the configuration file
+### With the settings file
 
-In your configuration files, you have a `variables` section where you can add your custom constants.
+In your settings files, you have a `variables` section where you can add your custom constants.
 
 Example: `"creator_name": "TheRake66"`
 
@@ -120,7 +120,7 @@ Example: `fast add component button --creator_name=TheRake66`
 
 ### With modules
 
-Inside the Fast installation folder, there is a `modules` folder. It contains all the scripts that you can load in the `modules` section of your configuration files. When executing a command, each script is executed, and a `variables` dictionary placed at the root of the module is retrieved and added to the variables.
+Inside the Fast installation folder, there is a `modules` folder. It contains all the scripts that you can load in the `modules` section of your settings files. When executing a command, each script is executed, and a `variables` dictionary placed at the root of the module is retrieved and added to the variables.
 
 Example:
 ```python
@@ -135,26 +135,26 @@ variables: dict[str, str] = {
 Variables are loaded in a specific order. Variables loaded later will overwrite previous ones:
 1. `Predefined variables`
 2. `From loaded modules`
-3. `From configuration file`
+3. `From settings file`
 4. `From CLI arguments`
 
 ## File extensions
 
-Fast does not modify the content of all files, only those whose extension is listed in the `suffixs` array of the configuration file.
+Fast does not modify the content of all files, only those whose extension is listed in the `suffixs` array of the settings file.
 
 ## Modify templates
 
-To use your own templates, simply put the URLs or paths in the `template` section of the configuration file.
+To use your own templates, simply put the URLs or paths in the `template` section of the settings file.
 
 Here is an example for adding a C# library: `"libcs": "https://.../library_csharp.zip"`
 
 You can also put your templates in the `templates` folder inside the Fast installation folder to keep them offline.
 
-In the configuration file: `"libcs": "templates/library_csharp.zip"`
+In the settings file: `"libcs": "templates/library_csharp.zip"`
 
 ## Adding a service
 
-Fast integrates a command shortcut system called a service. It allows you to quickly run a command. You will find the list of services in the `services` section of the configuration file, like this:
+Fast integrates a command shortcut system called a service. It allows you to quickly run a command. You will find the list of services in the `services` section of the settings file, like this:
 `"key": "command"`
 
 Here is an example to open the calculator:

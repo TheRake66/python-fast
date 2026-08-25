@@ -9,4 +9,4 @@ def parse_git(subparsers: _SubParsersAction[ArgumentParser]) -> None:
 
 def handle_git(args: Namespace) -> None:
   if not webbrowser.open("https://github.com/TheRake66/python-fast"):
-    print_error("Cannot open repository!")
+    print_error("Can't open repository!")

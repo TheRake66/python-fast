@@ -11,4 +11,4 @@ def parse_open(subparsers: _SubParsersAction[ArgumentParser]) -> None:
 def handle_open(args: Namespace) -> None:
   try: open_folder(Path.cwd())
   except ExplorerInvalidPath as e: 
-    print_error("Cannot open current folder!", e)
+    print_error("Can't open current folder!", e)
