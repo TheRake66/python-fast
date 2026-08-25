@@ -1,0 +1,1 @@
+Compress-Archive -Path 'core\*' -DestinationPath 'release.zip' -Force

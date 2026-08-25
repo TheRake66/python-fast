@@ -1,5 +1,5 @@
 from argparse import ArgumentParser, Namespace, _SubParsersAction
-from libraries.exlorer import open_folder, root, ExplorerInvalidPath
+from libraries.explorer import open_folder, root, ExplorerInvalidPath
 from libraries.message import print_error
 
 def parse_root(subparsers: _SubParsersAction[ArgumentParser]) -> None:

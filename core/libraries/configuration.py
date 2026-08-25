@@ -1,5 +1,5 @@
 from libraries.catchable import Catchable
-from libraries.exlorer import root
+from libraries.explorer import root
 from pathlib import Path
 import json
 

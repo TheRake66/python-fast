@@ -1,5 +1,5 @@
 from argparse import ArgumentParser, Namespace, _SubParsersAction
-from libraries.exlorer import open_folder, ExplorerInvalidPath
+from libraries.explorer import open_folder, ExplorerInvalidPath
 from libraries.message import print_error
 from pathlib import Path
 
