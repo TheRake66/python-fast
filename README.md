@@ -19,9 +19,9 @@ You just need to enter a single command to install Fast:
 
 ## Installation folder
 
-| Windows         | Linux    | MacOS                                |
-| --------------- | -------- | ------------------------------------ |
-| `%appdata\Fast` | `~/Fast` | `~/Library/Application Support/Fast` |
+| Windows         | Linux            | MacOS                                |
+| --------------- | ---------------- | ------------------------------------ |
+| `%appdata\Fast` | `~/.config/Fast` | `~/Library/Application Support/Fast` |
 
 ## Folder structure
 

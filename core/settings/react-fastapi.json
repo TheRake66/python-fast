@@ -12,7 +12,7 @@
     "backend_port": "8000"
   },
   "modules": [
-    "datetime",
+    "calendar",
     "system"
   ],
   "suffixs": [
