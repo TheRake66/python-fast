@@ -1,5 +1,5 @@
 from argparse import ArgumentParser, Namespace, _SubParsersAction
-from libraries.message import print_info, print_list, print_dict
+from libraries.message import print_list, print_dict, print_var
 from libraries.setting import get_used, get_value
 from libraries.variable import from_modules
 
@@ -15,10 +15,10 @@ def handle_infos(args: Namespace) -> None:
   constants: dict[str, str] = get_value("constants")
   modules: list[str] = get_value("modules")
   suffixs: list[str] = get_value("suffixs")
-  print_info(f"Current settings is: {current}")
-  print_list(f"Available services", services)
-  print_list(f"Available templates", templates)
-  print_dict(f"Defined constants", constants)
-  print_list(f"Loaded modules", modules)
-  print_dict(f"Module variables", variables)
-  print_list(f"Editable files", suffixs)
+  print_var("⚙️ Current settings is {}.", current)
+  print_list("🚀 Available services", services)
+  print_list("📦 Available templates", templates)
+  print_dict("🔡 Defined constants", constants)
+  print_list("🧩 Loaded modules", modules)
+  print_dict("🔡 Module variables", variables)
+  print_list("📄 Editable files", suffixs)

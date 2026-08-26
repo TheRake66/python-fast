@@ -1,5 +1,5 @@
 from argparse import ArgumentParser, Namespace, _SubParsersAction
-from libraries.message import print_info, print_success
+from libraries.message import print_var, print_success
 from libraries.setting import set_used, get_list
 
 def parse_load(subparsers: _SubParsersAction) -> None:
@@ -9,6 +9,6 @@ def parse_load(subparsers: _SubParsersAction) -> None:
   parser.set_defaults(func=handle_load)
 
 def handle_load(args: Namespace) -> None:
-  print_info(f"Load settings: {args.name}...")
+  print_var("💾 Loading settings {}...", args.name)
   set_used(args.name)
   print_success("Successfully loaded.")

@@ -1,5 +1,5 @@
 from argparse import ArgumentParser, Namespace, _SubParsersAction, REMAINDER
-from libraries.message import print_info, print_success
+from libraries.message import print_success, print_var
 from libraries.template import process_zip, ProcessType
 from libraries.setting import get_value
 
@@ -12,6 +12,6 @@ def parse_create(subparsers: _SubParsersAction) -> None:
   parser.set_defaults(func=handle_create)
 
 def handle_create(args: Namespace) -> None:
-  print_info(f"Creation of item: {args.name}...")
+  print_var("🎨 Creation of item {}...", args.name)
   process_zip(args.key, args.name, args.extras, ProcessType.EXTRACT)
-  print_success("Successfully added.")
+  print_success("Successfully created.")

@@ -1,6 +1,6 @@
 from argparse import ArgumentParser, Namespace, _SubParsersAction
 from libraries.explorer import open_folder, ExplorerInvalidPath
-from libraries.message import print_error
+from libraries.message import print_error, print_var
 from libraries.system import root
 
 def parse_root(subparsers: _SubParsersAction[ArgumentParser]) -> None:
@@ -8,6 +8,8 @@ def parse_root(subparsers: _SubParsersAction[ArgumentParser]) -> None:
   parser.set_defaults(func=handle_root)
 
 def handle_root(args: Namespace) -> None:
-  try: open_folder(root)
+  try:
+    print_var("📂 Opening current folder {}...", root)
+    open_folder(root)
   except ExplorerInvalidPath as e: 
     print_error("Can't open installation folder!", e)

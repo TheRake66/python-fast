@@ -1,5 +1,5 @@
 from argparse import ArgumentParser, Namespace, _SubParsersAction, REMAINDER
-from libraries.message import print_info, print_success
+from libraries.message import print_success, print_var
 from libraries.template import process_zip, ProcessType
 from libraries.setting import get_value
 
@@ -12,6 +12,6 @@ def parse_delete(subparsers: _SubParsersAction) -> None:
   parser.set_defaults(func=handle_delete)
 
 def handle_delete(args: Namespace) -> None:
-  print_info(f"Deletion of item: {args.name}...")
+  print_var("🗑️ Deletion of item {}...", args.name)
   process_zip(args.key, args.name, args.extras, ProcessType.DELETE)
   print_success("Successfully deleted.")
