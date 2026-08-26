@@ -100,7 +100,7 @@ In the same example, a file named `{{namespace_ossep_lower}}.tsx` will result in
 
 In the Fast installation folder, you will find a `settings` folder containing your settings files for Fast.
 
-The `react-fastapi.json` settings file is included as an example. It allows you to develop a React/TS + FastAPI web application.
+The `react-fastapi.json` settings file is included as an example. It allows you to develop a React (with TypeScript) + FastAPI web application.
 
 Create your own settings files based on the last one (for example: `godot.json`, with your templates for rapid game development).
 
