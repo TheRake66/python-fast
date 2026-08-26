@@ -4,7 +4,7 @@ $ZipUrl = "https://github.com/TheRake66/python-fast/raw/refs/heads/main/release.
 $DestDir = Join-Path $env:APPDATA "Fast"
 $TempZip = Join-Path $env:TEMP "install_$PID.zip"
 $Venv =  "$DestDir\.venv"
-$VenvScripts = "$Venv\.Scripts"
+$VenvScripts = "$Venv\Scripts"
 
 try {
     $ErrorMsg = "Unable to download file archive!"

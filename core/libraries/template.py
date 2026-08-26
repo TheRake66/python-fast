@@ -3,7 +3,7 @@ from libraries.variable import get_injected
 from libraries.catchable import Catchable
 from libraries.system import root
 from urllib.request import urlretrieve
-from zipfile import ZipFile
+from zipfile import ZipFile, ZipInfo
 from pathlib import Path
 from enum import Enum
 import uuid, os, tempfile
@@ -37,50 +37,46 @@ def __clean_zip(path: Path) -> None:
   try: os.remove(path)
   except: pass
 
-def __extract_zip(path: Path, variables: dict[str, str]) -> None:
+def __extract_zip(path: Path, variables: dict[str, str], zip: ZipFile, info: ZipInfo) -> None:
   suffixs: list[str] = get_value("suffixs")
-  try:
-    with ZipFile(path, "r") as zip:
-      try:
-        for info in zip.infolist():
-          if info.is_dir(): continue
-          # Remplace les variables dans son chemin.
-          info.filename = __replace_variables(info.filename, variables)
-          object: Path =  Path(info.filename)
-          # S'il n'est pas dans la liste des extensions on extrait juste le fichier tel quel.
-          if not object.suffix in suffixs:
-            zip.extract(info, ".")
-            continue
-          # On lit son contenu.
-          content: str = ""
-          with zip.open(info, "r") as buffer:
-            content = buffer.read().decode("utf-8")
-          # Remplace les variables dans le contenu.
-          content = __replace_variables(content, variables)
-          # Extrait le nouveau fichier.
-          object.parent.mkdir(parents=True, exist_ok=True)
-          with open(info.filename, "w", encoding="utf-8", newline="") as buffer:
-            buffer.write(content)
-      except: raise BadTemplateFormat(path)
-  except: raise CantOpenTemplate(path)
+  # S'il n'est pas dans la liste des extensions on extrait juste le fichier tel quel.
+  if not path.suffix in suffixs:
+    zip.extract(info, ".")
+    return
+  # On lit son contenu.
+  content: str = ""
+  with zip.open(info, "r") as buffer:
+    content = buffer.read().decode("utf-8")
+  # Remplace les variables dans le contenu.
+  content = __replace_variables(content, variables)
+  # Extrait le nouveau fichier.
+  path.parent.mkdir(parents=True, exist_ok=True)
+  with open(path, "w", encoding="utf-8", newline="") as buffer:
+    buffer.write(content)
 
-def __delete_zip(path: Path, variables: dict[str, str]) -> None:
+def __delete_zip(path: Path) -> None:
+  # Check si c'est un fichier ou un lien pour le supprimer.
+  if path.is_file() or path.is_symlink():
+    path.unlink()
+    # Supprimer les dossier parents non vides pour remonter jusqu'au bon dossier.
+    for parent in path.parents:
+      try: parent.rmdir()
+      except OSError: break
+
+def __browse_zip(path: Path, variables: dict[str, str], type: ProcessType):
   try:
     with ZipFile(path, "r") as zip:
-      try:
-        for info in zip.infolist():
-          file: str = info.filename
-          # Remplace les variables dans son chemin.
-          file = __replace_variables(file, variables)
-          # Check si c'est un fichier ou un lien pour le supprimer.
-          object: Path = Path(file)
-          if object.is_file() or object.is_symlink():
-            object.unlink()
-            # Supprimer les dossier parents non vides pour remonter jusqu'au bon dossier.
-            for parent in object.parents:
-              try: parent.rmdir()
-              except OSError: break
-      except: raise BadTemplateFormat(path)
+      for info in zip.infolist():
+        if info.is_dir(): continue
+        # Outils de merde qui mettent des backslashs non standards.
+        info.filename = info.filename.replace('\\', '/')
+        info.filename = __replace_variables(info.filename, variables)
+        object: Path = Path(info.filename)
+        try:
+          match type:
+            case ProcessType.EXTRACT: __extract_zip(object, variables, zip, info)
+            case ProcessType.DELETE: __delete_zip(object)
+        except: raise BadTemplateFormat(path)
   except: raise CantOpenTemplate(path)
 
 def process_zip(template: str, namespace: str, extras: list[str], type: ProcessType):
@@ -92,7 +88,5 @@ def process_zip(template: str, namespace: str, extras: list[str], type: ProcessT
     clean = True
   if not path.exists(): raise TemplateNotFound(path)
   variables: dict[str, str] = get_injected(namespace, extras)
-  match type:
-    case ProcessType.EXTRACT: __extract_zip(path, variables)
-    case ProcessType.DELETE: __delete_zip(path, variables)
+  __browse_zip(path, variables, type)
   if clean: __clean_zip(path)

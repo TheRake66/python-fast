@@ -10,6 +10,8 @@ ZIP_URL="https://github.com/TheRake66/python-fast/raw/refs/heads/main/release.zi
 APP_DIR="Fast"
 TMP_ZIP="/tmp/install_$$.zip"
 ERROR_MSG=""
+VENV_PY="$APP_PATH/.venv"
+VENV_BIN="$VENV_PY/bin"
 
 if [[ "$OSTYPE" == darwin* ]]; then
     APP_PATH="$HOME/Library/Application Support/$APP_DIR"
@@ -30,14 +32,14 @@ unzip -qo "$TMP_ZIP" -d "$APP_PATH" 2>/dev/null || [ $? -eq 1 ]
 
 ERROR_MSG="Unable to install the command using pip!"
 echo -e "${CYAN}Installation with pip...${NC}"
-python3 -m venv "$APP_PATH/.venv"
-source "$APP_PATH/.venv/bin/activate"
+python3 -m venv "$VENV_PY"
+source "$VENV_BIN/activate"
 pip install -e "$APP_PATH" -q --disable-pip-version-check
 
 ERROR_MSG="Unable to create symlink!"
 echo -e "${CYAN}Creating symlink...${NC}"
 mkdir -p "$HOME/.local/bin"
-ln -sf "$APP_PATH/.venv/bin/fast" "$HOME/.local/bin/fast"
+ln -sf "$VENV_BIN/fast" "$HOME/.local/bin/fast"
 
 ERROR_MSG="Unable to clean the installation!"
 echo -e "${CYAN}Cleaning installation...${NC}"
