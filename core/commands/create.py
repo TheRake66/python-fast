@@ -3,15 +3,15 @@ from libraries.message import print_info, print_success
 from libraries.template import process_zip, ProcessType
 from libraries.setting import get_value
 
-def parse_add(subparsers: _SubParsersAction) -> None:
+def parse_create(subparsers: _SubParsersAction) -> None:
   templates: list[str] = get_value("templates").keys()
-  parser: ArgumentParser = subparsers.add_parser("add",  help="Add a new element to your project from a template.")
+  parser: ArgumentParser = subparsers.add_parser("create", help="Create a new element from a template.")
   parser.add_argument("key", type=str, choices=templates, help="Template key in the settings file.")
   parser.add_argument("name", type=str, help="Name of the element to add.")
   parser.add_argument("extras", nargs=REMAINDER, help="Additional constants to add to the process.")
-  parser.set_defaults(func=handle_add)
+  parser.set_defaults(func=handle_create)
 
-def handle_add(args: Namespace) -> None:
-  print_info(f"Adding item: {args.name}...")
+def handle_create(args: Namespace) -> None:
+  print_info(f"Creation of item: {args.name}...")
   process_zip(args.key, args.name, args.extras, ProcessType.EXTRACT)
   print_success("Successfully added.")

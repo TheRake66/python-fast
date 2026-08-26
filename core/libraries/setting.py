@@ -3,7 +3,7 @@ from libraries.explorer import root
 from pathlib import Path
 import json
 
-class CantOpenSettings(Catchable): message="Can't open settings file!"
+class CantSaveSettings(Catchable): message="Can't save settings preferences!"
 class MissingSettings(Catchable): message="Settings file not found!"
 class InvalidSettings(Catchable): message="Settings file {} doesn't contain JSON!"
 class SettingsKeyNotFound(Catchable): message="Key {} doesn't exist in settings file!"
@@ -32,7 +32,7 @@ def set_used(name: str) -> None:
   file: Path = __folder / f"{name}.json"
   if not file.exists(): raise MissingSettings()
   try: __save.write_text(file.name)
-  except: raise CantOpenSettings()
+  except: raise CantSaveSettings()
 
 def get_used() -> str:
   if not __used: raise SettingsNotLoaded()

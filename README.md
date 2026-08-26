@@ -35,7 +35,7 @@ The other folders contain Fast source code, so you do not need to access them.
 ## CLI Arguments
 
 * `fast`: Main command.
-  * `add`: Add a new element to your project from a template.
+  * `create`: Create a new element to your project from a template.
     * `key`: Template key in the settings file.
     * `name`: Name of the element to add.
     * `extras`: Additional constants to add to the process.
@@ -43,7 +43,7 @@ The other folders contain Fast source code, so you do not need to access them.
     * `key`: Template key in the settings file.
     * `name`: Name of the element to delete.
     * `extras`: Additional constants to add to the process.
-  * `run`: Run a service in the system terminal.
+  * `start`: Start a service in the system terminal.
     * `key`: Service key in the settings file.
   * `load`: Load another settings file.
     * `name`: Filename of settings without suffix.
@@ -144,7 +144,7 @@ Fast does not modify the content of all files, only those whose extension is lis
 
 ## Modify templates
 
-To use your own templates, simply put the URLs or paths in the `template` section of the settings file.
+To use your own templates, simply put the URLs or paths in the `templates` section of the settings file.
 
 Here is an example for adding a C# library: `"libcs": "https://.../library_csharp.zip"`
 

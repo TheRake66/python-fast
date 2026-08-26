@@ -14,18 +14,18 @@ def main():
       dest="command", required=True, 
       help="Available subcommands...")
 
-    from commands.run import parse_run
-    from commands.add import parse_add
+    from commands.create import parse_create
     from commands.delete import parse_delete
+    from commands.start import parse_start
     from commands.infos import parse_infos
     from commands.load import parse_load
     from commands.root import parse_root
     from commands.open import parse_open
     from commands.git import parse_git
 
-    parse_run(subparsers)
-    parse_add(subparsers)
+    parse_create(subparsers)
     parse_delete(subparsers)
+    parse_start(subparsers)
     parse_infos(subparsers)
     parse_load(subparsers)
     parse_root(subparsers)

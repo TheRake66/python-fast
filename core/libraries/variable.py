@@ -4,8 +4,11 @@ import os, importlib
 
 class InvalidNamespace(Catchable): message="Namespace {} is not valid!"
 class InvalidModule(Catchable): message="Module {} is not valid!"
-class InvalidConstant(Catchable): message="Constants from settings are not valid!"
 class InvalidExtra(Catchable): message="Extra constant {} is not valid!"
+
+def __add_braces(variables: dict[str, str]) -> dict[str, str]:
+  return {"{{" + key + "}}": value \
+    for key, value in variables.items()}
 
 def __from_extras(extras: list[str]) -> dict[str, str]:
   variables: dict[str, str] = {}
@@ -16,20 +19,6 @@ def __from_extras(extras: list[str]) -> dict[str, str]:
       if key.startswith("--"): key = key[2:]
       variables[key] = value
     except: raise InvalidExtra(extra)
-  return variables
-
-def __from_constants() -> dict[str, str]:
-  try: return get_value("constants")
-  except: raise InvalidConstant()
-
-def __from_modules() -> dict[str, str]:
-  modules: list[str] = get_value("modules")
-  variables: dict[str, str] = {}
-  for module in modules:
-    try:
-      loaded = importlib.import_module(f"modules.{module}")
-      variables |= getattr(loaded, "variables")
-    except: raise InvalidModule(module)
   return variables
 
 def __from_namespace(namespace: str) -> dict[str, str]:
@@ -46,7 +35,7 @@ def __from_namespace(namespace: str) -> dict[str, str]:
     dash: str = "-".join(parts)
     under: str = "-".join(parts)
 
-    return {                                         # Example: pkg1-pkg2-name
+    return {                                     # Example: pkg1-pkg2-name
       "lower_name":            name.lower(),     # name
       "upper_name":            name.upper(),     # NAME
       "title_name":            name.title(),     # Name
@@ -84,13 +73,20 @@ def __from_namespace(namespace: str) -> dict[str, str]:
     }
   except: raise InvalidNamespace(namespace)
 
-def __add_braces(variables: dict[str, str]) -> dict[str, str]:
-  return {"{{" + key + "}}": value \
-    for key, value in variables.items()}
+def from_modules() -> dict[str, str]:
+  modules: list[str] = get_value("modules")
+  variables: dict[str, str] = {}
+  for module in modules:
+    try:
+      loaded = importlib.import_module(f"modules.{module}")
+      variables |= getattr(loaded, "variables")
+    except: raise InvalidModule(module)
+  return variables
 
 def get_injected(namespace: str, extras: list[str]) -> dict[str, str]:
+  constants: dict[str, str] = get_value("constants")
   return __add_braces(
     __from_namespace(namespace) | \
-    __from_modules() | \
-    __from_constants() | \
+    from_modules() | \
+    constants | \
     __from_extras(extras))
