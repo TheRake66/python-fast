@@ -1,7 +1,9 @@
 from libraries.catchable import Catchable
-from libraries.explorer import root
+from libraries.system import root
 from pathlib import Path
 import json
+
+__DEFAULT_SETTINGS: str = "react-fastapi.json"
 
 class CantSaveSettings(Catchable): message="Can't save settings preferences!"
 class MissingSettings(Catchable): message="Settings file not found!"
@@ -18,7 +20,7 @@ def load_json() -> None:
   global __settings
   global __used
   try: 
-    name: str = "react-fastapi.json" \
+    name: str = __DEFAULT_SETTINGS \
       if not __save.exists() else __save.read_text()
     file: Path = __folder / name
     content: str = file.read_text()

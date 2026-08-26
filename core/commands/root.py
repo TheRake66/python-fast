@@ -1,6 +1,7 @@
 from argparse import ArgumentParser, Namespace, _SubParsersAction
-from libraries.explorer import open_folder, root, ExplorerInvalidPath
+from libraries.explorer import open_folder, ExplorerInvalidPath
 from libraries.message import print_error
+from libraries.system import root
 
 def parse_root(subparsers: _SubParsersAction[ArgumentParser]) -> None:
   parser: ArgumentParser = subparsers.add_parser("root", help="Open installation folder in file explorer.")

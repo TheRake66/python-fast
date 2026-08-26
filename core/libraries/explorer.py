@@ -1,19 +1,15 @@
 from libraries.catchable import Catchable
-import subprocess, platform, os
+from libraries.system import os, OSType
+import subprocess, os
 from pathlib import Path
 
 class ExplorerInvalidPath(Catchable): message="Invalid path {} to open!"
 
-root: Path | None = None
-
-if not root:
-  root = Path(__file__).parent.parent
-
 def open_folder(path: str) -> None:
   try:
     object: Path = Path(path).resolve()
-    system: str = platform.system()
-    if system == "Windows": os.startfile(object)
-    elif system == "Darwin": subprocess.run(["open", object])
-    else: subprocess.run(["xdg-open", object])
+    match os:
+      case OSType.Windows: os.startfile(object)
+      case OSType.MacOS: subprocess.run(["open", object])
+      case OSType.Linux: subprocess.run(["xdg-open", object])
   except: raise ExplorerInvalidPath(path)

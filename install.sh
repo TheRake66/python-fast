@@ -21,17 +21,18 @@ trap 'echo -e "${RED}${ERROR_MSG}${NC}"; exit 1' ERR
 
 ERROR_MSG="Unable to download file archive!"
 echo -e "${CYAN}Download in progress...${NC}"
-curl -sSL "$ZIP_URL" -o "$TMP_ZIP" 2>/dev/null || wget -q "$ZIP_URL" -O "$TMP_ZIP"
+curl -sSL "$ZIP_URL" -o "$TMP_ZIP" 2>/dev/null
 
 ERROR_MSG="Unable to decompress file archive!"
 echo -e "${CYAN}Decompression...${NC}"
 mkdir -p "$APP_PATH"
-unzip -qo "$TMP_ZIP" -d "$APP_PATH" || [ $? -eq 1 ]
+unzip -qo "$TMP_ZIP" -d "$APP_PATH" 2>/dev/null || [ $? -eq 1 ]
 
 ERROR_MSG="Unable to install the command using pip!"
 echo -e "${CYAN}Installation with pip...${NC}"
-cd "$APP_PATH"
-pip install -e .
+python3 -m venv "$APP_PATH/.venv"
+source "$APP_PATH/.venv/bin/activate"
+pip install -e "$APP_PATH" -q --disable-pip-version-check
 
 ERROR_MSG="Unable to clean the installation!"
 echo -e "${CYAN}Cleaning installation...${NC}"
