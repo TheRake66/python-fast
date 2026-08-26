@@ -8,15 +8,15 @@ class OSType(Enum):
   MacOS: int = 2
   Unknown: int = -1
 
-os: OSType | None = None
+type: OSType | None = None
 root: Path | None = None
 
 if not root:
   root = Path(__file__).parent.parent
 
-if not os:
+if not type:
   match platform.system():
-    case "Windows": os = OSType.Windows
-    case "Darwin": os = OSType.MacOS
-    case "Linux": os = OSType.Linux
-    case _: os = OSType.Unknown
+    case "Windows": type = OSType.Windows
+    case "Darwin": type = OSType.MacOS
+    case "Linux": type = OSType.Linux
+    case _: type = OSType.Unknown

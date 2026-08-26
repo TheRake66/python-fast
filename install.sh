@@ -34,6 +34,11 @@ python3 -m venv "$APP_PATH/.venv"
 source "$APP_PATH/.venv/bin/activate"
 pip install -e "$APP_PATH" -q --disable-pip-version-check
 
+ERROR_MSG="Unable to create symlink!"
+echo -e "${CYAN}Creating symlink...${NC}"
+mkdir -p "$HOME/.local/bin"
+ln -sf "$APP_PATH/.venv/bin/fast" "$HOME/.local/bin/fast"
+
 ERROR_MSG="Unable to clean the installation!"
 echo -e "${CYAN}Cleaning installation...${NC}"
 rm -f "$TMP_ZIP"
