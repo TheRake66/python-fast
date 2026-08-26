@@ -12,9 +12,9 @@ Fast works with a variable system. For example, if some files in your template c
 
 # Prerequisites
 
-| All systems  | Windows         | Linux and MacOS |
-| ------------ | --------------- | --------------- |
-| +Python 3.14 | PowerShell      | cURL and Unzip  |
+| All systems    | Windows           | Linux and MacOS  |
+| -------------- | ----------------- | ---------------- |
+| `+Python 3.14` | `PowerShell`      | `cURL and Unzip` |
 
 ## Command installation
 
@@ -66,32 +66,32 @@ Here is an example for the name `package-subpackage-name`:
 
 | Variable                    | Result                    |
 | --------------------------- | ------------------------- |
-| {{lower_name}}            | name                    |
-| {{upper_name}}            | NAME                    |
-| {{title_name}}            | Name                    |
-| {{relative_dir}}          | ../../                  |
-| {{relative_parent}}       | ../../../               |
-| {{relative_path_lower}}   | ../../name              |
-| {{relative_path_upper}}   | ../../NAME              |
-| {{relative_path_title}}   | ../../Name              |
-| {{namespace_ossep_lower}} | package\subpackage\name |
-| {{namespace_ossep_upper}} | PACKAGE\SUBPACKAGE\NAME |
-| {{namespace_ossep_title}} | Package\Subpackage\Name |
-| {{namespace_slash_lower}} | package\subpackage\name |
-| {{namespace_slash_upper}} | PACKAGE\SUBPACKAGE\NAME |
-| {{namespace_slash_title}} | Package\Subpackage\Name |
-| {{namespace_back_lower}}  | package/subpackage/name |
-| {{namespace_back_upper}}  | PACKAGE/SUBPACKAGE/NAME |
-| {{namespace_back_title}}  | Package/Subpackage/Name |
-| {{namespace_dash_lower}}  | package-subpackage-name |
-| {{namespace_dash_upper}}  | PACKAGE-SUBPACKAGE-NAME |
-| {{namespace_dash_title}}  | Package-Subpackage-Name |
-| {{namespace_under_lower}} | package_subpackage_name |
-| {{namespace_under_upper}} | PACKAGE_SUBPACKAGE_NAME |
-| {{namespace_under_title}} | Package_Subpackage_Name |
-| {{namespace_dots_lower}}  | package.subpackage.name |
-| {{namespace_dots_upper}}  | PACKAGE.SUBPACKAGE.NAME |
-| {{namespace_dots_title}}  | Package.Subpackage.Name |
+| `{{lower_name}}`            | `name`                    |
+| `{{upper_name}}`            | `NAME`                    |
+| `{{title_name}}`            | `Name`                    |
+| `{{relative_dir}}`          | `../../`                  |
+| `{{relative_parent}}`       | `../../../`               |
+| `{{relative_path_lower}}`   | `../../name`              |
+| `{{relative_path_upper}}`   | `../../NAME`              |
+| `{{relative_path_title}}`   | `../../Name`              |
+| `{{namespace_ossep_lower}}` | `package\subpackage\name` |
+| `{{namespace_ossep_upper}}` | `PACKAGE\SUBPACKAGE\NAME` |
+| `{{namespace_ossep_title}}` | `Package\Subpackage\Name` |
+| `{{namespace_slash_lower}}` | `package\subpackage\name` |
+| `{{namespace_slash_upper}}` | `PACKAGE\SUBPACKAGE\NAME` |
+| `{{namespace_slash_title}}` | `Package\Subpackage\Name` |
+| `{{namespace_back_lower}}`  | `package/subpackage/name` |
+| `{{namespace_back_upper}}`  | `PACKAGE/SUBPACKAGE/NAME` |
+| `{{namespace_back_title}}`  | `Package/Subpackage/Name` |
+| `{{namespace_dash_lower}}`  | `package-subpackage-name` |
+| `{{namespace_dash_upper}}`  | `PACKAGE-SUBPACKAGE-NAME` |
+| `{{namespace_dash_title}}`  | `Package-Subpackage-Name` |
+| `{{namespace_under_lower}}` | `package_subpackage_name` |
+| `{{namespace_under_upper}}` | `PACKAGE_SUBPACKAGE_NAME` |
+| `{{namespace_under_title}}` | `Package_Subpackage_Name` |
+| `{{namespace_dots_lower}}`  | `package.subpackage.name` |
+| `{{namespace_dots_upper}}`  | `PACKAGE.SUBPACKAGE.NAME` |
+| `{{namespace_dots_title}}`  | `Package.Subpackage.Name` |
 
 The `ossep` variables match the namespace separator with the file system separator (`\` for Windows, `/` for Linux and macOS). This allows the variable to be included in the file name to create subfolders directly using the package names.
 
