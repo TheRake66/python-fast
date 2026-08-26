@@ -10,6 +10,12 @@ The principle is simple: you have templates, and whenever you want to add a page
 
 Fast works with a variable system. For example, if some files in your template contain `{{lower_name}}`, Fast will replace all occurrences with the name of the element you are currently adding. This allows each file to be modified on the fly as it is being added.
 
+# Prerequisites
+
+| All systems  | Windows         | Linux and MacOS |
+| ------------ | --------------- | --------------- |
+| +Python 3.14 | PowerShell      | cURL and Unzip  |
+
 ## Command installation
 
 You just need to enter a single command to install Fast:
