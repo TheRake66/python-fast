@@ -42,6 +42,16 @@ echo -e "${CYAN}Creating symlink...${NC}"
 mkdir -p "$HOME/.local/bin"
 ln -sf "$VENV_BIN/fast" "$HOME/.local/bin/fast"
 
+ERROR_MSG="Unable to update shell PATH!"
+echo -e "${CYAN}Configuring PATH...${NC}"
+SHELL_RC="$HOME/.bashrc"
+if [[ "$SHELL" == */zsh ]]; then
+    SHELL_RC="$HOME/.zshrc"
+fi
+if ! grep -q "\$HOME/.local/bin" "$SHELL_RC" 2>/dev/null; then
+    echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$SHELL_RC"
+fi
+
 ERROR_MSG="Unable to clean the installation!"
 echo -e "${CYAN}Cleaning installation...${NC}"
 rm -f "$TMP_ZIP"
