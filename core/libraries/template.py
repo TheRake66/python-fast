@@ -1,7 +1,7 @@
 from libraries.setting import get_value
 from libraries.variable import get_injected
 from libraries.catchable import Catchable
-from libraries.system import root
+from libraries.system import root, working
 from urllib.request import urlretrieve
 from zipfile import ZipFile, ZipInfo
 from pathlib import Path
@@ -60,24 +60,25 @@ def __delete_zip(path: Path) -> None:
     path.unlink()
     # Supprimer les dossier parents non vides pour remonter jusqu'au bon dossier.
     for parent in path.parents:
+      if parent.resolve() == working.resolve(): break
       try: parent.rmdir()
       except OSError: break
 
 def __browse_zip(path: Path, variables: dict[str, str], type: ProcessType):
-  try:
-    with ZipFile(path, "r") as zip:
-      for info in zip.infolist():
-        if info.is_dir(): continue
-        # Outils de merde qui mettent des backslashs non standards.
-        info.filename = info.filename.replace('\\', '/')
-        info.filename = __replace_variables(info.filename, variables)
-        object: Path = Path(info.filename)
-        try:
-          match type:
-            case ProcessType.EXTRACT: __extract_zip(object, variables, zip, info)
-            case ProcessType.DELETE: __delete_zip(object)
-        except: raise BadTemplateFormat(path)
+  try: zip = ZipFile(path, "r")
   except: raise CantOpenTemplate(path)
+  with zip:
+    for info in zip.infolist():
+      if info.is_dir(): continue
+      # Outils de merde qui mettent des backslashs non standards.
+      info.filename = info.filename.replace('\\', '/')
+      info.filename = __replace_variables(info.filename, variables)
+      object: Path = Path(info.filename)
+      try:
+        match type:
+          case ProcessType.EXTRACT: __extract_zip(object, variables, zip, info)
+          case ProcessType.DELETE: __delete_zip(object)
+      except: raise BadTemplateFormat(path)
 
 def process_zip(template: str, namespace: str, extras: list[str], type: ProcessType):
   zip: str = get_value("templates", template)
@@ -88,5 +89,6 @@ def process_zip(template: str, namespace: str, extras: list[str], type: ProcessT
     clean = True
   if not path.exists(): raise TemplateNotFound(path)
   variables: dict[str, str] = get_injected(namespace, extras)
-  __browse_zip(path, variables, type)
-  if clean: __clean_zip(path)
+  try: __browse_zip(path, variables, type)
+  finally:
+    if clean: __clean_zip(path)

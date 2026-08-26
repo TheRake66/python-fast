@@ -11,8 +11,7 @@ def main():
       description="Template-based file generator for creating an app quickly.")
 
     subparsers: _SubParsersAction[ArgumentParser] = parser.add_subparsers(
-      dest="command", required=True, 
-      help="Available subcommands...")
+      dest="command", required=True, help="Available subcommands...")
 
     from commands.create import parse_create
     from commands.delete import parse_delete

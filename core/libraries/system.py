@@ -10,9 +10,13 @@ class OSType(Enum):
 
 type: OSType | None = None
 root: Path | None = None
+working: Path | None = None
 
 if not root:
   root = Path(__file__).parent.parent
+
+if not working:
+  working = Path.cwd()
 
 if not type:
   match platform.system():
