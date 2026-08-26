@@ -104,9 +104,9 @@ def __browse_zip(path: Path, variables: dict[str, str], type: ProcessType):
   except: raise CantOpenTemplate(path)
   with zip:
     for info in zip.infolist():
-      if info.is_dir(): continue
       # Outils de merde qui mettent des backslashs non standards.
       info.filename = info.filename.replace('\\', '/')
+      if info.is_dir(): continue
       info.filename = __replace_variables(info.filename, variables)
       object: Path = Path(info.filename)
       match type:
