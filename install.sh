@@ -10,14 +10,15 @@ ZIP_URL="https://github.com/TheRake66/python-fast/raw/refs/heads/main/release.zi
 APP_DIR="Fast"
 TMP_ZIP="/tmp/install_$$.zip"
 ERROR_MSG=""
-VENV_PY="$APP_PATH/.venv"
-VENV_BIN="$VENV_PY/bin"
 
 if [[ "$OSTYPE" == darwin* ]]; then
     APP_PATH="$HOME/Library/Application Support/$APP_DIR"
 else
     APP_PATH="${XDG_CONFIG_HOME:-$HOME/.config}/$APP_DIR"
 fi
+
+VENV_PY="$APP_PATH/.venv"
+VENV_BIN="$VENV_PY/bin"
 
 trap 'echo -e "${RED}${ERROR_MSG}${NC}"; exit 1' ERR
 
