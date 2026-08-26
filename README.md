@@ -12,9 +12,9 @@ Fast works with a variable system. For example, if some files in your template c
 
 # Prerequisites
 
-| All systems    | Windows           | Linux and MacOS  |
-| -------------- | ----------------- | ---------------- |
-| `+Python 3.14` | `PowerShell`      | `cURL and Unzip` |
+| All systems             | Windows           | Linux and MacOS  |
+| ----------------------- | ----------------- | ---------------- |
+| `Python 3.14 (minimum)` | `PowerShell`      | `cURL and Unzip` |
 
 ## Command installation
 
