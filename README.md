@@ -53,7 +53,9 @@ The other folders contain Fast source code, so you do not need to access them.
     * `key`: Service key in the settings file.
   * `load`: Load another settings file.
     * `name`: Filename of settings without suffix.
+  * `check`: Check intergity of an existing element from a template.
   * `infos`: Display many informations about current settings.
+  * `pack`: Pack current folder into a template.
   * `root`: Open installation folder in file explorer.
   * `open`: Open current folder in file explorer.
   * `git`: Open source code repository in web browser.

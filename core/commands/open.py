@@ -1,6 +1,5 @@
 from argparse import ArgumentParser, Namespace, _SubParsersAction
-from libraries.explorer import open_folder, ExplorerInvalidPath
-from libraries.message import print_error, print_var
+from libraries.explorer import open_folder
 from libraries.system import working
 
 def parse_open(subparsers: _SubParsersAction[ArgumentParser]) -> None:
@@ -8,8 +7,5 @@ def parse_open(subparsers: _SubParsersAction[ArgumentParser]) -> None:
   parser.set_defaults(func=handle_open)
 
 def handle_open(args: Namespace) -> None:
-  try: 
-    print_var("📂 Opening current folder {}...", working)
-    open_folder(working)
-  except ExplorerInvalidPath as e: 
-    print_error("Can't open current folder!", e)
+  print("📂 Opening current folder...")
+  open_folder(working)

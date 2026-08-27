@@ -10,7 +10,7 @@ class SaveSettingsLocked(Catchable): message="Can't read settings preferences!"
 class CantSaveSettings(Catchable): message="Can't save settings preferences!"
 class MissingSettings(Catchable): message="Settings file {} not found!"
 class InvalidSettings(Catchable): message="Settings file {} doesn't contain JSON!"
-class SettingsKeyNotFound(Catchable): message="Key {} doesn't exist in settings file!"
+class SettingsKeyNotFound(Catchable): message="Key {} doesn't exists in settings file!"
 class SettingsNotLoaded(Catchable): message="Settings file not loaded or empty!"
 
 __settings: dict | None = None
