@@ -47,7 +47,7 @@ def __download_zip(url: str) -> Path:
   except: raise CantDownloadTemplate(url)
 
 def __clean_zip(path: Path) -> None:
-  try: os.remove(path)
+  try: path.unlink()
   except: pass
 
 def __extract_zip(path: Path, variables: dict[str, str], suffixs: list[str], zip: ZipFile, info: ZipInfo) -> None:
