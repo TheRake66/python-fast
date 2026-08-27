@@ -144,7 +144,7 @@ variables: dict[str, str] = {
 }
 ```
 
-## Variables order
+## Variables priority
 
 Variables are loaded in a specific order. Variables loaded later will overwrite previous ones:
 1. `Predefined variables`
