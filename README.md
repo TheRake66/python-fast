@@ -116,7 +116,7 @@ In the Fast installation folder, you will find a `settings` folder containing yo
 
 The `react-fastapi.json` settings file is included as an example. It allows you to develop a React (with TypeScript) + FastAPI web application.
 
-Create your own settings files based on the last one (for example: `godot.json`, with your templates for rapid game development).
+Create your own settings files based on the last one (for example: `godot.json` with your templates for rapid game development).
 
 ## Adding variables
 
