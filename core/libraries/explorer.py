@@ -1,6 +1,5 @@
 from libraries.catchable import Catchable
 from libraries.system import type, OSType
-from libraries.message import print_var
 import subprocess, os
 from pathlib import Path
 
