@@ -10,7 +10,7 @@ def parse_pack(subparsers: _SubParsersAction) -> None:
   parser.set_defaults(func=handle_pack)
 
 def handle_pack(args: Namespace) -> None:
-  print_var("📦 Pack of current folder into {} template...", args.name)
+  print_var("📦 Pack current folder into {} template...", args.name)
   packinto_zip(args.name)
   print_success('Successfully packed.')
   print('📂 Opening templates folder...')
