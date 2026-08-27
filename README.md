@@ -8,7 +8,7 @@ Fast is a file generator designed to help you build applications faster.
 
 The principle is simple: you have templates, and whenever you want to add a page, a component, a library, or basically anything to your project (even the foundation of the project itself), Fast will generate the files.
 
-Fast works with a variable system. For example, if some files in your template contain `{{lower_name}}`, Fast will replace all occurrences with the name of the element you are currently adding. This allows each file to be modified on the fly as it is being added.
+Fast works with a variable system. For example, if some files in your template contain `{{lower_name}}` Fast will replace all occurrences with the name of the element you are currently adding. This allows each file to be modified on the fly as it is being added.
 
 # Prerequisites
 
