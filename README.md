@@ -64,7 +64,7 @@ The other folders contain Fast source code, so you do not need to access them.
   * `open`: Open current folder in file explorer.
   * `git`: Open source code repository in web browser.
 
-Parameters with "?" are optional.
+Parameters with `?` are optional.
 
 ## Predefined variables
 
