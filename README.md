@@ -110,7 +110,7 @@ In the same example, a file named `{{namespace_ossep_lower}}.tsx` will result in
        └──name.tsx
 ```
 
-## Add a settings
+## Add settings
 
 In the Fast installation folder, you will find a `settings` folder containing your settings files for Fast.
 
@@ -118,9 +118,9 @@ The `react-fastapi.json` settings file is included as an example. It allows you 
 
 Create your own settings files based on the last one (for example: `godot.json` with your templates for game development).
 
-## Adding variables
+## Add variables
 
-### With the settings file
+### With settings file
 
 In your settings files, you have a `variables` section where you can add your custom constants.
 
@@ -144,7 +144,7 @@ variables: dict[str, str] = {
 }
 ```
 
-## Variable Priority
+## Variables order
 
 Variables are loaded in a specific order. Variables loaded later will overwrite previous ones:
 1. `Predefined variables`
@@ -166,7 +166,7 @@ You can also put your templates in the `templates` folder inside the Fast instal
 
 In the settings file: `"libcs": "templates/library_csharp.zip"`
 
-## Adding a service
+## Add service
 
 Fast integrates a command shortcut system called a service. It allows you to quickly run a command. You will find the list of services in the `services` section of the settings file, like this:
 `"key": "command"`
