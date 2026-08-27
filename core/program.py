@@ -17,8 +17,8 @@ def main():
     from commands.delete import parse_delete
     from commands.start import parse_start
     from commands.check import parse_check
-    from commands.infos import parse_infos
     from commands.pack import parse_pack
+    from commands.infos import parse_infos
     from commands.load import parse_load
     from commands.root import parse_root
     from commands.open import parse_open
@@ -28,8 +28,8 @@ def main():
     parse_delete(subparsers)
     parse_start(subparsers)
     parse_check(subparsers)
-    parse_infos(subparsers)
     parse_pack(subparsers)
+    parse_infos(subparsers)
     parse_load(subparsers)
     parse_root(subparsers)
     parse_open(subparsers)

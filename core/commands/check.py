@@ -7,7 +7,7 @@ def parse_check(subparsers: _SubParsersAction) -> None:
   templates: list[str] = get_value("templates").keys()
   parser: ArgumentParser = subparsers.add_parser("check", help="Check intergity of an existing element from a template.")
   parser.add_argument("key", type=str, choices=templates, help="Template key in the settings file.")
-  parser.add_argument("name", type=str, help="Name of the element to delete.")
+  parser.add_argument("name", type=str, help="Name of the element to check.")
   parser.add_argument("extras", nargs=REMAINDER, help="Additional constants to add to the process.")
   parser.set_defaults(func=handle_check)
 
