@@ -75,7 +75,7 @@ def __extract_zip(path: Path, variables: dict[str, str], suffixs: list[str], zip
     with zip.open(info, "r") as buffin, open(path, "w", encoding="utf-8", newline="") as buffout:
       content: str = buffin.read().decode("utf-8")
       buffout.write(__replace_variables(content, variables))
-  except: CantCreateEditFile(path)
+  except: raise CantCreateEditFile(path)
 
 def __check_zip(path: Path) -> None:
   print_var( \
@@ -90,14 +90,14 @@ def __delete_zip(path: Path) -> None:
   # On supprime le fichier.
   print_var("🗑️ Deletion of file {}...", path)
   try: path.unlink()
-  except: CantDeleteFile(path)
+  except: raise CantDeleteFile(path)
   # Supprimer les dossier parents non vides pour remonter jusqu'au bon dossier.
   for parent in path.parents:
     if parent.resolve() == working.resolve(): break
     if any(parent.iterdir()): break
     print_var("📁 Deletion of folder {}...", parent)
     try: parent.rmdir()
-    except: CantDeleteFolder(parent)
+    except: raise CantDeleteFolder(parent)
 
 def __browse_zip(path: Path, variables: dict[str, str], type: ProcessType):
   # On ouvre le template.
