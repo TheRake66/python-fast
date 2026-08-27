@@ -31,38 +31,38 @@ You just need to enter a single command to install Fast:
 
 ## Folder structure
 
-* `Fast`: Installation folder.
-  * `modules`: The folder containing your custom variable modules.
-  * `settings`: The folder containing your custom settings.
-  * `templates`: The folder containing your custom templates.
+* `Fast` : Installation folder.
+  * `modules` : The folder containing your custom variable modules.
+  * `settings` : The folder containing your custom settings.
+  * `templates` : The folder containing your custom templates.
 
 The other folders contain Fast source code, so you do not need to access them.
 
 ## CLI Arguments
 
-* `fast`: Main command.
-  * `create`: Create a new element to your project from a template.
-    * `key`: Template key in the settings file.
-    * `name`: Name of the element to add.
-    * `?extras`: Additional constants to add to the process.
-  * `delete`: Delete an existing element in your project from a template.
-    * `key`: Template key in the settings file.
-    * `name`: Name of the element to delete.
-    * `?extras`: Additional constants to add to the process.
-  * `start`: Start a service in the system terminal.
-    * `key`: Service key in the settings file.
-  * `load`: Load another settings file.
-    * `name`: Filename of settings without suffix.
-  * `check`: Check intergity of an existing element from a template.
-    * `key`: Template key in the settings file.
-    * `name`: Name of the element to check.
-    * `?extras`: Additional constants to add to the process.
-  * `pack`: Pack current folder into a template.
-    * `?name`: Name of the output archive for template.
-  * `infos`: Display many informations about current settings.
-  * `root`: Open installation folder in file explorer.
-  * `open`: Open current folder in file explorer.
-  * `git`: Open source code repository in web browser.
+* `fast` : Main command.
+  * `create` : Create a new element to your project from a template.
+    * `key` : Template key in the settings file.
+    * `name` : Name of the element to add.
+    * `?extras` : Additional constants to add to the process.
+  * `delete` : Delete an existing element in your project from a template.
+    * `key` : Template key in the settings file.
+    * `name` : Name of the element to delete.
+    * `?extras` : Additional constants to add to the process.
+  * `start` : Start a service in the system terminal.
+    * `key` : Service key in the settings file.
+  * `load` : Load another settings file.
+    * `name` : Filename of settings without suffix.
+  * `check` : Check intergity of an existing element from a template.
+    * `key` : Template key in the settings file.
+    * `name` : Name of the element to check.
+    * `?extras` : Additional constants to add to the process.
+  * `pack` : Pack current folder into a template.
+    * `?name` : Name of the output archive for template.
+  * `infos` : Display many informations about current settings.
+  * `root` : Open installation folder in file explorer.
+  * `open` : Open current folder in file explorer.
+  * `git` : Open source code repository in web browser.
 
 Parameters with `?` are optional.
 
@@ -70,7 +70,7 @@ Parameters with `?` are optional.
 
 Fast includes variables built on the fly using the name of the element you are currently adding.
 
-Here is an example for the name `package-subpackage-name`:
+Here is an example for the name `package-subpackage-name` :
 
 | Variable                    | Result                    |
 | --------------------------- | ------------------------- |
