@@ -4,7 +4,7 @@ from libraries.system import root
 from pathlib import Path
 import json
 
-__DEFAULT_SETTINGS: str = "react-fastapi.json"
+__DEFAULT_SETTINGS: str = "vite-fastapi.json"
 
 class SaveSettingsLocked(Catchable): message="Can't read settings preferences!"
 class CantSaveSettings(Catchable): message="Can't save settings preferences!"
@@ -29,7 +29,7 @@ def load_json() -> None:
     file: Path = __folder / name
     print_var("⌛ Loading settings file {}...", file.stem)
     content: str = file.read_text()
-  except: raise MissingSettings(file)
+  except: raise MissingSettings(name)
   try: 
     __settings = json.loads(content)
     __used = file
