@@ -32,6 +32,7 @@
     "library": "https://github.com/TheRake66/templates-vite-fastapi/raw/refs/heads/main/template_library.zip",
     "locale": "https://github.com/TheRake66/templates-vite-fastapi/raw/refs/heads/main/template_locale.zip",
     "style": "https://github.com/TheRake66/templates-vite-fastapi/raw/refs/heads/main/template_style.zip",
+    "table": "https://github.com/TheRake66/templates-vite-fastapi/raw/refs/heads/main/template_table.zip",
     "enum": "https://github.com/TheRake66/templates-vite-fastapi/raw/refs/heads/main/template_enum.zip",
     "page": "https://github.com/TheRake66/templates-vite-fastapi/raw/refs/heads/main/template_page.zip",
     "type": "https://github.com/TheRake66/templates-vite-fastapi/raw/refs/heads/main/template_type.zip",

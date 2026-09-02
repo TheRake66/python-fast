@@ -1,6 +1,8 @@
 from libraries.setting import get_value
 from libraries.catchable import Catchable
-import os, importlib
+from importlib import import_module
+from types import ModuleType
+import os
 
 class InvalidNamespace(Catchable): message="Namespace {} is not valid!"
 class InvalidModule(Catchable): message="Module {} is not valid!"
@@ -78,7 +80,7 @@ def from_modules() -> dict[str, str]:
   variables: dict[str, str] = {}
   for module in modules:
     try:
-      loaded = importlib.import_module(f"modules.{module}")
+      loaded: ModuleType = import_module(f"modules.{module}")
       variables |= getattr(loaded, "variables")
     except: raise InvalidModule(module)
   return variables
