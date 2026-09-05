@@ -1,7 +1,8 @@
 {
   "services": {
-    "backend": "start python api/start.py",
-    "frontend": "start npm run dev"
+    "backend": "python api/start.py",
+    "frontend": "npm run dev",
+    "install": "npm install && python api/setup.py"
   },
   "constants": {
     "creator_name": "TheRake66",

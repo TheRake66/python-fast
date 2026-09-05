@@ -1,7 +1,7 @@
 from argparse import ArgumentParser, Namespace, _SubParsersAction
 from libraries.message import print_success, print_error, print_var
+from libraries.system import new_terminal
 from libraries.setting import get_value
-from subprocess import Popen
 
 def parse_start(subparsers: _SubParsersAction[ArgumentParser]) -> None:
   scripts: list[str] = get_value("services").keys()
@@ -11,9 +11,5 @@ def parse_start(subparsers: _SubParsersAction[ArgumentParser]) -> None:
 
 def handle_start(args: Namespace) -> None:
   command: str = get_value("services", args.key)
-  try:
-    print_var('🚀 Service startup {}...', args.key)
-    Popen(command, shell=True)
-    print_success("Successfully started.")
-  except Exception as e:
-    print_error("Can't start this service!", e)
+  print_var('🚀 Service startup {}...', args.key)
+  new_terminal(command)

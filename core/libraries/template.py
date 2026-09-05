@@ -3,11 +3,12 @@ from libraries.variable import get_injected
 from libraries.setting import get_value
 from libraries.catchable import Catchable
 from libraries.system import root, working
-from urllib.request import urlretrieve
 from zipfile import ZipFile, ZipInfo, ZIP_DEFLATED
+from urllib.request import urlretrieve
+from tempfile import gettempdir
 from pathlib import Path
+from uuid import uuid4
 from enum import Enum
-import uuid, os, tempfile
 
 class TemplateNotFound(Catchable): message="Template {} not found!"
 class CantDownloadTemplate(Catchable): message="Can't download {} template!"
@@ -39,8 +40,8 @@ def __replace_variables(text: str, variables: dict[str, str]) -> str:
 
 def __download_zip(url: str) -> Path:
   try:
-    temp = Path(tempfile.gettempdir())
-    name: str = str(uuid.uuid4().hex)
+    temp = Path(gettempdir())
+    name: str = str(uuid4().hex)
     path = temp / name
     urlretrieve(url, path)
     return path

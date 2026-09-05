@@ -1,26 +1,31 @@
+from libraries.catchable import Catchable
+from platform import system
+from subprocess import run
 from pathlib import Path
 from enum import Enum
-import platform
 
-class OSType(Enum):
+class SystemInvalidCmd(Catchable): message="Invalid command {} to run!"
+
+class OSName(Enum):
   Windows: int = 0
   Linux: int = 1
   MacOS: int = 2
   Unknown: int = -1
 
-type: OSType | None = None
-root: Path | None = None
-working: Path | None = None
+root: Path = Path(__file__).parent.parent
+working: Path = Path.cwd()
 
-if not root:
-  root = Path(__file__).parent.parent
+match system():
+  case "Windows": name: OSName = OSName.Windows
+  case "Darwin": name: OSName = OSName.MacOS
+  case "Linux": name: OSName = OSName.Linux
+  case _: name: OSName = OSName.Unknown
 
-if not working:
-  working = Path.cwd()
-
-if not type:
-  match platform.system():
-    case "Windows": type = OSType.Windows
-    case "Darwin": type = OSType.MacOS
-    case "Linux": type = OSType.Linux
-    case _: type = OSType.Unknown
+def new_terminal(cmd: str) -> None:
+  args: dict[OSName, list[str]] = {
+    OSName.Windows: ["start", "cmd", "/c", cmd],
+    OSName.MacOS: ["osascript", "-e", f'tell application "Terminal" to do script "{cmd}"'],
+    OSName.Linux: ["gnome-terminal", "--", "bash", "-c", f"{cmd}; exec bash"],
+    OSName.Unknown: [cmd]}
+  try: run(args[name], shell=True, check=True)
+  except: raise SystemInvalidCmd(cmd)

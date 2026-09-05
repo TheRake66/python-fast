@@ -2,7 +2,7 @@ from libraries.catchable import Catchable
 from libraries.message import print_var
 from libraries.system import root
 from pathlib import Path
-import json
+from json import loads
 
 __DEFAULT_SETTINGS: str = "vite-fastapi.json"
 
@@ -31,7 +31,7 @@ def load_json() -> None:
     content: str = file.read_text()
   except: raise MissingSettings(name)
   try: 
-    __settings = json.loads(content)
+    __settings = loads(content)
     __used = file
   except: raise InvalidSettings(file.name)
 
