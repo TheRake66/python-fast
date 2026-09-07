@@ -1,4 +1,5 @@
 from argparse import ArgumentParser, Namespace, _SubParsersAction
+from libraries.message import print_success
 from libraries.explorer import open_folder
 from libraries.system import working
 
@@ -9,3 +10,4 @@ def parse_open(subparsers: _SubParsersAction[ArgumentParser]) -> None:
 def handle_open(args: Namespace) -> None:
   print("📂 Opening current folder...")
   open_folder(working)
+  print_success("Successfully opened.")

@@ -16,3 +16,4 @@ def handle_pack(args: Namespace) -> None:
   print_success('Successfully packed.')
   print('📂 Opening templates folder...')
   open_folder(root / "templates")
+  print_success("Successfully opened.")

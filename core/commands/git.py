@@ -1,5 +1,5 @@
 from argparse import ArgumentParser, Namespace, _SubParsersAction
-from libraries.message import print_error
+from libraries.message import print_error, print_success
 import webbrowser
 
 def parse_git(subparsers: _SubParsersAction[ArgumentParser]) -> None:
@@ -10,3 +10,4 @@ def handle_git(args: Namespace) -> None:
   print("🌐 Opening source code repository...")
   if not webbrowser.open("https://github.com/TheRake66/python-fast"):
     print_error("Can't open repository!")
+  else: print_success("Successfully opened.")

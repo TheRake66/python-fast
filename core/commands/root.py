@@ -1,4 +1,5 @@
 from argparse import ArgumentParser, Namespace, _SubParsersAction
+from libraries.message import print_success
 from libraries.explorer import open_folder
 from libraries.system import root
 
@@ -9,3 +10,4 @@ def parse_root(subparsers: _SubParsersAction[ArgumentParser]) -> None:
 def handle_root(args: Namespace) -> None:
   print("📂 Opening installation folder...")
   open_folder(root)
+  print_success("Successfully opened.")
