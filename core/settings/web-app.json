@@ -1,0 +1,40 @@
+{
+  "services": {
+    "backend": "python api/start.py",
+    "frontend": "npm run dev",
+    "install": "npm install && python api/setup.py"
+  },
+  "constants": {
+    "creator_name": "TheRake66",
+    "licence_name": "GPL-3.0",
+    "language_short": "fr",
+    "language_full": "fr-FR",
+    "language_name": "French"
+  },
+  "modules": [
+    "calendar",
+    "system"
+  ],
+  "suffixs": [
+    ".tsx",
+    ".ts",
+    ".py",
+    ".scss",
+    ".json",
+    ".html",
+    ".md"
+  ],
+  "templates": {
+    "component": "https://github.com/TheRake66/templates-web-app/raw/refs/heads/main/template_component.zip",
+    "project": "https://github.com/TheRake66/templates-web-app/raw/refs/heads/main/template_project.zip",
+    "service": "https://github.com/TheRake66/templates-web-app/raw/refs/heads/main/template_service.zip",
+    "library": "https://github.com/TheRake66/templates-web-app/raw/refs/heads/main/template_library.zip",
+    "locale": "https://github.com/TheRake66/templates-web-app/raw/refs/heads/main/template_locale.zip",
+    "style": "https://github.com/TheRake66/templates-web-app/raw/refs/heads/main/template_style.zip",
+    "table": "https://github.com/TheRake66/templates-web-app/raw/refs/heads/main/template_table.zip",
+    "enum": "https://github.com/TheRake66/templates-web-app/raw/refs/heads/main/template_enum.zip",
+    "page": "https://github.com/TheRake66/templates-web-app/raw/refs/heads/main/template_page.zip",
+    "type": "https://github.com/TheRake66/templates-web-app/raw/refs/heads/main/template_type.zip",
+    "api": "https://github.com/TheRake66/templates-web-app/raw/refs/heads/main/template_api.zip"
+  }
+}
