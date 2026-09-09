@@ -4,7 +4,7 @@ from libraries.system import root
 from pathlib import Path
 from json import loads
 
-__DEFAULT_SETTINGS: str = "vite-fastapi.json"
+__DEFAULT_SETTINGS: str = "web-app.json"
 
 class SaveSettingsLocked(Catchable): message="Can't read settings preferences!"
 class CantSaveSettings(Catchable): message="Can't save settings preferences!"
