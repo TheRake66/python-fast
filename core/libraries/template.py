@@ -80,7 +80,7 @@ def __extract_zip(path: Path, variables: dict[str, str], suffixs: list[str], zip
 
 def __check_zip(path: Path) -> None:
   print_var( \
-  "✅ File {} was found." if path.is_file() else \
+  "🔎 File {} was found." if path.is_file() else \
   "⚠️ File {} was not found." , path)
 
 def __delete_zip(path: Path) -> None:
