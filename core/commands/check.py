@@ -12,6 +12,6 @@ def parse_check(subparsers: _SubParsersAction) -> None:
   parser.set_defaults(func=handle_check)
 
 def handle_check(args: Namespace) -> None:
-  print_var("🔎 Check intergity of element {}...", args.name)
+  print_var("🛡️ Check intergity of element {}...", args.name)
   process_zip(args.key, args.name, args.extras, ProcessType.INTEGRITY)
   print_success("Successfully checked.")
