@@ -19,8 +19,7 @@ __folder: Path = Path(root / "settings")
 __save: Path = Path(root / "usedsettings")
 
 def load_json() -> None:
-  global __settings
-  global __used
+  global __settings, __used
   try:
     name: str = __DEFAULT_SETTINGS \
       if not __save.is_file() else __save.read_text()

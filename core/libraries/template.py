@@ -34,15 +34,15 @@ class ProcessType(Enum):
 def __replace_variables(text: str, variables: dict[str, str]) -> str:
   for variable in variables.keys():
     if variable in text:
-      value = variables[variable]
-      text = text.replace(variable, value)
+      value: str = variables[variable]
+      text: str = text.replace(variable, value)
   return text
 
 def __download_zip(url: str) -> Path:
   try:
-    temp = Path(gettempdir())
+    temp: Path = Path(gettempdir())
     name: str = str(uuid4().hex)
-    path = temp / name
+    path: Path = temp / name
     urlretrieve(url, path)
     return path
   except: raise CantDownloadTemplate(url)
