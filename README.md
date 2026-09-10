@@ -1,6 +1,4 @@
-<div align="center">
-  <img src="./banner.jpg" alt="Fast" width=100%>
-</div>
+![Banner](./banner.jpg)
 
 # Fast
 
