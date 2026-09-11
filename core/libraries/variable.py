@@ -28,50 +28,51 @@ def __from_namespace(namespace: str) -> dict[str, str]:
     parts: list[str] = namespace.split("-")
     packages: list[str] = parts[0:-1]
     relative: str = len(packages) * "../"
+    parent: str = f"../{relative}"
     name: str = parts[-1]
     path: str = f"{relative}{name}"
     ossep: str = os.sep.join(parts)
-    slash: str = "\\".join(parts)
-    back: str = "/".join(parts)
+    back: str = "\\".join(parts)
+    slash: str = "/".join(parts)
     dots: str = ".".join(parts)
     dash: str = "-".join(parts)
-    under: str = "-".join(parts)
+    under: str = "_".join(parts)
 
-    return {                                     # Example: pkg1-pkg2-name
-      "lower_name":            name.lower(),     # name
-      "upper_name":            name.upper(),     # NAME
-      "title_name":            name.title(),     # Name
-      
-      "relative_dir":          relative,         # ../../
-      "relative_parent":       f"../{relative}", # ../../../
-      
-      "relative_path_lower":   path.lower(),     # ../../name
-      "relative_path_upper":   path.upper(),     # ../../NAME
-      "relative_path_title":   path.title(),     # ../../Name
-      
-      "namespace_ossep_lower": ossep.lower(),    # pkg1\pkg2\name
-      "namespace_ossep_upper": ossep.upper(),    # PKG1\PKG2\NAME
-      "namespace_ossep_title": ossep.title(),    # Pkg1\Pkg2\Name
+    return {                                  # Example: pkg1-pkg2-name
+      "lower_name":            name.lower(),  # name
+      "upper_name":            name.upper(),  # NAME
+      "title_name":            name.title(),  # Name
+
+      "relative_dir":          relative,      # ../../
+      "relative_parent":       parent,        # ../../../
+
+      "relative_path_lower":   path.lower(),  # ../../name
+      "relative_path_upper":   path.upper(),  # ../../NAME
+      "relative_path_title":   path.title(),  # ../../Name
+
+      "namespace_ossep_lower": ossep.lower(), # pkg1\pkg2\name
+      "namespace_ossep_upper": ossep.upper(), # PKG1\PKG2\NAME
+      "namespace_ossep_title": ossep.title(), # Pkg1\Pkg2\Name
     
-      "namespace_slash_lower": slash.lower(),    # pkg1\pkg2\name
-      "namespace_slash_upper": slash.upper(),    # PKG1\PKG2\NAME
-      "namespace_slash_title": slash.title(),    # Pkg1\Pkg2\Name
+      "namespace_slash_lower": slash.lower(), # pkg1/pkg2/name
+      "namespace_slash_upper": slash.upper(), # PKG1/PKG2/NAME
+      "namespace_slash_title": slash.title(), # Pkg1/Pkg2/Name
 
-      "namespace_back_lower":  back.lower(),     # pkg1/pkg2/name
-      "namespace_back_upper":  back.upper(),     # PKG1/PKG2/NAME
-      "namespace_back_title":  back.title(),     # Pkg1/Pkg2/Name
+      "namespace_back_lower":  back.lower(),  # pkg1\pkg2\name
+      "namespace_back_upper":  back.upper(),  # PKG1\PKG2\NAME
+      "namespace_back_title":  back.title(),  # Pkg1\Pkg2\Name
 
-      "namespace_dash_lower":  dash.lower(),     # pkg1-pkg2-name
-      "namespace_dash_upper":  dash.upper(),     # PKG1-PKG2-NAME
-      "namespace_dash_title":  dash.title(),     # Pkg1-Pkg2-Name
+      "namespace_dash_lower":  dash.lower(),  # pkg1-pkg2-name
+      "namespace_dash_upper":  dash.upper(),  # PKG1-PKG2-NAME
+      "namespace_dash_title":  dash.title(),  # Pkg1-Pkg2-Name
 
-      "namespace_under_lower": under.lower(),    # pkg1_pkg2_name
-      "namespace_under_upper": under.upper(),    # PKG1_PKG2_NAME
-      "namespace_under_title": under.title(),    # Pkg1_Pkg2_Name
-      
-      "namespace_dots_lower":  dots.lower(),     # pkg1.pkg2.name
-      "namespace_dots_upper":  dots.upper(),     # PKG1.PKG2.NAME
-      "namespace_dots_title":  dots.title()      # Pkg1.Pkg2.Name
+      "namespace_under_lower": under.lower(), # pkg1_pkg2_name
+      "namespace_under_upper": under.upper(), # PKG1_PKG2_NAME
+      "namespace_under_title": under.title(), # Pkg1_Pkg2_Name
+
+      "namespace_dots_lower":  dots.lower(),  # pkg1.pkg2.name
+      "namespace_dots_upper":  dots.upper(),  # PKG1.PKG2.NAME
+      "namespace_dots_title":  dots.title()   # Pkg1.Pkg2.Name
     }
   except: raise InvalidNamespace(namespace)
 

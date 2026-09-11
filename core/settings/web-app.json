@@ -1,8 +1,9 @@
 {
   "services": {
-    "backend": "python api/start.py",
-    "frontend": "npm run dev",
-    "install": "npm install && python api/setup.py"
+    "backend": "python backend/start.py",
+    "frontend": "npm --prefix frontend run dev",
+    "install": "npm --prefix frontend install && python backend/setup.py",
+    "compile": "npm --prefix frontend run build"
   },
   "constants": {
     "creator_name": "TheRake66",
@@ -21,6 +22,8 @@
     ".py",
     ".scss",
     ".json",
+    ".yaml",
+    ".yml",
     ".html",
     ".md"
   ],
