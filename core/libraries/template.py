@@ -155,7 +155,7 @@ def packinto_zip(name: str) -> None:
       for file in files:
         if file.is_file():
           # On garde qu'un chemin relatif.
-          arcname = file.relative_to(working)
+          arcname: Path = file.relative_to(working)
           print_var("📄 Compression of file {}...", arcname)
           try: zip.write(file, arcname)
           except: raise CantCompressFile(file)
