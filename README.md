@@ -105,7 +105,7 @@ In the same example, a file named `{{namespace_ossep_lower}}.tsx` will result in
 ```
 └─package/
   └─subpackage/
-    └──name.tsx
+    └─name.tsx
 ```
 
 ## Add settings
