@@ -104,8 +104,8 @@ The `ossep` variables match the namespace separator with the file system separat
 In the same example, a file named `{{namespace_ossep_lower}}.tsx` will result in the following file tree:
 ```
 └─package
-    └─subpackage
-        └──name.tsx
+  └─subpackage
+    └──name.tsx
 ```
 
 ## Add settings
