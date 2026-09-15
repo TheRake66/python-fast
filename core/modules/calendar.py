@@ -1,6 +1,6 @@
 from datetime import datetime
 
-now = datetime.now()
+now: datetime = datetime.now()
 
 variables: dict[str, str] = {
   "datetime_full": now.strftime("%Y-%m-%d %H:%M:%S"),
