@@ -145,7 +145,7 @@ def packinto_zip(name: str) -> None:
   # S'il existe pas on le creer.
   path: Path = root / "templates" / f"{name}.zip"
   if path.is_file(): raise TemplateAlreadyExist(path)
-  try: zip = ZipFile(path, "w", ZIP_DEFLATED)
+  try: zip: ZipFile = ZipFile(path, "w", ZIP_DEFLATED)
   except: raise CantCreateTemplate(path)  
   try:
     with zip:
