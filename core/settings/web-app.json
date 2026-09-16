@@ -1,9 +1,9 @@
 {
   "services": {
-    "backend": "python backend/start.py",
+    "backend": "python backend/scripts.py start",
     "frontend": "npm --prefix frontend run dev",
-    "install": "npm --prefix frontend install && python backend/setup.py",
-    "compile": "npm --prefix frontend run build"
+    "install": "npm --prefix frontend install && python backend/scripts.py install",
+    "compile": "npm --prefix frontend run build && python backend/scripts.py build"
   },
   "constants": {
     "creator_name": "TheRake66",
